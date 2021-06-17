@@ -12,13 +12,11 @@ docker run --gpus=1 --rm -p8000:8000 -p8001:8001 -p8002:8002 -v/full/path/to/par
 
 - CMSSW Setup
 ```bash
-cmsrel CMSSW_11_3_0_pre6
-cd CMSSW_11_3_0_pre6/src
+cmsrel CMSSW_12_0_0_pre2
+cd CMSSW_12_0_0_pre2/src
 cmsenv
-git cms-init --ssh
-git cms-addpkg RecoBTag/ONNXRuntime --ssh
-git cms-addpkg RecoBTag/FeatureTools --ssh
-git cms-addpkg RecoBTag/Combined --ssh
+git cms-init
+git cms-addpkg RecoBTag/Combined
 git cms-checkout-topic jmduarte:noragged
 git clone git@github.com:jmduarte/RecoBTag-Combined RecoBTag/Combined/data -b noragged
 scram b -j 12
