@@ -1,4 +1,4 @@
-name: "particlenet_onnx"
+name: "particlenet"
 platform: "onnxruntime_onnx"
 max_batch_size : 16
 input [
