@@ -3,11 +3,11 @@
 - Triton Setup
 ```bash
 # see: https://github.com/triton-inference-server/server/blob/master/docs/quickstart.md
-docker pull nvcr.io/nvidia/tritonserver:20.06-py3
+docker pull fastml/triton-torchgeo:20.09-py3-geometric
 git clone git@github.com:jmduarte/particlenet-triton-model-repository
 cd particlenet-triton-model-repository/
 source fetch_model.sh
-docker run --gpus=1 --rm -p8000:8000 -p8001:8001 -p8002:8002 -v/full/path/to/particlenet-triton-model-repository/model_repository:/models nvcr.io/nvidia/tritonserver:20.06-py3 tritonserver --model-repository=/models
+nvidia-docker run --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 --gpus=1 --rm -p8000:8000 -p8001:8001 -p8002:8002 -v/full/path/to/particlenet-triton-model-repository/model_repository:/models docker.io/fastml/triton-torchgeo:20.09-py3-geometric tritonserver --model-repository=/models
 ```
 
 - CMSSW Setup
